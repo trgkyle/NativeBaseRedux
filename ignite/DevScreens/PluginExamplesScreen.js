@@ -1,30 +1,38 @@
 // Fair Warning:  PluginExamples has a good bit of Ignite automation in editing.
 // Though robust, if you should modify this file, review your changes with us
 // As to not break the automated addition/subtractions.
-import React from 'react'
-import { View, ScrollView, Text, TouchableOpacity, Image } from 'react-native'
-import { createStackNavigator, createAppContainer } from 'react-navigation'
-import { Images } from './DevTheme'
+import React from 'react';
+import {View, ScrollView, Text, TouchableOpacity, Image} from 'react-native';
+import {createAppContainer} from 'react-navigation';
+import {createStackNavigator} from 'react-navigation-stack';
+
+import {Images} from './DevTheme';
 
 // Examples Render Engine
-import ExamplesRegistry from '../../App/Services/ExamplesRegistry'
-import '../Examples/Components/animatableExample.js'
-import '../Examples/Components/vectorExample.js'
+import ExamplesRegistry from '../../App/Services/ExamplesRegistry';
+import '../Examples/Components/animatableExample.js';
+import '../Examples/Components/vectorExample.js';
 
 // Styles
-import styles from './Styles/PluginExamplesScreenStyles'
+import styles from './Styles/PluginExamplesScreenStyles';
 
 class PluginExamplesScreen extends React.Component {
-  render () {
+  render() {
     return (
       <View style={styles.mainContainer}>
-        <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
-        <TouchableOpacity onPress={() => this.props.navigation.goBack(null)} style={{
-          position: 'absolute',
-          paddingTop: 30,
-          paddingHorizontal: 5,
-          zIndex: 10
-        }}>
+        <Image
+          source={Images.background}
+          style={styles.backgroundImage}
+          resizeMode="stretch"
+        />
+        <TouchableOpacity
+          onPress={() => this.props.navigation.goBack(null)}
+          style={{
+            position: 'absolute',
+            paddingTop: 30,
+            paddingHorizontal: 5,
+            zIndex: 10,
+          }}>
           <Image source={Images.backButton} />
         </TouchableOpacity>
         <ScrollView style={styles.container}>
@@ -34,9 +42,11 @@ class PluginExamplesScreen extends React.Component {
               <Text style={styles.titleText}>Plugin Examples</Text>
             </View>
             <View style={styles.section}>
-              <Text style={styles.sectionText} >
-                The Plugin Examples screen is a playground for 3rd party libs and logic proofs.
-                Items on this screen can be composed of multiple components working in concert.  Functionality demos of libs and practices
+              <Text style={styles.sectionText}>
+                The Plugin Examples screen is a playground for 3rd party libs
+                and logic proofs. Items on this screen can be composed of
+                multiple components working in concert. Functionality demos of
+                libs and practices
               </Text>
             </View>
 
@@ -46,19 +56,22 @@ class PluginExamplesScreen extends React.Component {
           </View>
         </ScrollView>
       </View>
-    )
+    );
   }
 }
 
-const stackNavigator = createStackNavigator({
-  PluginExamplesScreen: {screen: PluginExamplesScreen}
-}, {
-  cardStyle: {
-    opacity: 1,
-    backgroundColor: '#3e243f'
+const stackNavigator = createStackNavigator(
+  {
+    PluginExamplesScreen: {screen: PluginExamplesScreen},
   },
-  headerMode: 'none',
-  initialRouteName: 'PluginExamplesScreen'
-})
+  {
+    cardStyle: {
+      opacity: 1,
+      backgroundColor: '#3e243f',
+    },
+    headerMode: 'none',
+    initialRouteName: 'PluginExamplesScreen',
+  },
+);
 
-export default createAppContainer(stackNavigator)
+export default createAppContainer(stackNavigator);
